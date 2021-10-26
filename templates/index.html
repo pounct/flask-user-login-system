@@ -1,0 +1,53 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+  more information about template inheritance. #}
+{%- extends "base.html" %}
+
+{# Loads some of the macros included with Flask-Bootstrap. We are using the
+  utils module here to automatically render Flask's flashed messages in a
+  bootstrap friendly manner #}
+{% import "bootstrap/utils.html" as utils %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+  This will keep scripts at the page end and a navbar you add on later
+  intact. #}
+{% block title %}
+  POUNCT Language
+{% endblock %}
+{% block content %}
+    <!--div class="logo">
+      <img src="{{ url_for('static', filename='img/logo192.png') }}" alt="logo"/>
+    </div-->
+    {% if current_user.is_authenticated %}
+      <h3 class="subtitle">
+        Welcome, <b>{{ current_user.name }}</b>!
+      </h3>
+    {% endif %}
+      <h2 class="title" style="text-align: center;">
+        <b>POUNCT Language Website</b>
+      </h2>
+      <h4 class="subtitle" style="text-align: center;">
+        Build a User Login System With :<br>
+        flask-login<br>
+        flask_bootstrap<br>
+        flask_nav<br>
+        Flask-WTF<br>
+        flask-mail<br>
+<br>
+        before login:<br>
+        Home      LogIn      SignUp<br>
+<br>
+        after login success:<br>
+        Home      Profile     LogOut<br>
+<br>
+        with options:<br>
+        Forgot your password? <br>
+        using mail to reset a Password<br>
+
+      </h4>
+    <ul>
+      {% for post in posts %}
+          <li>{{ post.title }}</li>
+      {% endfor %}
+    </ul>
+{% endblock %}
